@@ -7,6 +7,7 @@
 ## Objectives
 
 - explain what automated testing is and its importance
+  To test the experience and functionality of an app and to surface potential errors.
 - use react-testing-library for testing react components
 - use react-testing-library to test user interactions with fireEvent
 
