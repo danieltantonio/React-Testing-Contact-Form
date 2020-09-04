@@ -1,8 +1,8 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
 import ContactForm from './ContactForm';
 
-test("Renders ContactForm without crashing", () => {
+test("Renders ContactForm without crashing", async () => {
   render(<ContactForm />)
 });
 
@@ -21,9 +21,13 @@ test("Can type information into Contact Form and Submit", () => {
   fireEvent.change(messageInput, { target: { value: 'Bruh' } });
 // Click Submit button
 // 1.) Query Submit button
-  const submitButton = screen.queryByText(/Submit/i);
 // 2.) Run the click event on the button
-  fireEvent.click(submitButton);
+  const submitButton = screen.queryByTestId(/submit/i);
+    
+  act(() => {
+    fireEvent.click(submitButton)
+  })
 // Assert that the person is being rendered into state.
-
+//   const newPerson = screen.getByText(/firstName/i);
+//   expect(newPerson).toBeInTheDocument();
 })
